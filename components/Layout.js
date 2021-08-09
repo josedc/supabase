@@ -26,7 +26,30 @@ export default function Layout(props) {
   }
 
   return (
+<script>
+var canvas,
+  c,
+  devicePixelRatio,
+  container;
+
+function init() {
+  canvas = document.createElement( 'canvas' );
+  c = canvas.getContext( '2d' );
+  container = document.createElement( 'div' );
+  container.className = "container";
+  resetCanvas();
+  container.appendChild(canvas);
+  document.body.appendChild( container );
+}
+
+window.addEventListener('load',function() {
+  /* hack to prevent firing the init script before the window object's values are populated */
+  setTimeout(init,100);
+},false);
+</script>
     <main className="main flex h-screen w-screen overflow-hidden">
+      {/* Cards */}
+      
       {/* Sidebar */}
       <nav
         className="w-64 bg-gray-900 text-gray-100 overflow-scroll "
